@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="target/classes" path="src/main/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="src/main/groovy"/>
+	<classpathentry excluding="**/*.java" including="**/*.java" kind="src" path="src/main/resources"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Activiti Designer Extensions"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti5-compatibility-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti5-compatibility-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti5-engine-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti5-engine-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti5-spring-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti5-spring-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti5-spring-compatibility-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti5-spring-compatibility-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-app-logic-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-app-logic-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-app-rest-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-app-rest-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-bpmn-converter-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-bpmn-converter-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-bpmn-layout-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-bpmn-layout-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-bpmn-model-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-bpmn-model-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-camel-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-camel-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-cdi-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-cdi-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-common-rest-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-common-rest-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-cxf-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-cxf-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-dmn-api-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-dmn-api-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-dmn-engine-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-dmn-engine-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-dmn-engine-configurator-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-dmn-engine-configurator-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-dmn-json-converter-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-dmn-json-converter-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-dmn-model-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-dmn-model-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-dmn-rest-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-dmn-rest-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-dmn-xml-converter-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-dmn-xml-converter-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-engine-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-engine-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-form-api-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-form-api-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-form-engine-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-form-engine-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-form-engine-configurator-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-form-engine-configurator-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-form-json-converter-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-form-json-converter-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-form-model-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-form-model-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-image-generator-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-image-generator-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-jms-spring-executor-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-jmx-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-jmx-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-json-converter-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-json-converter-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-ldap-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-ldap-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-mule-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-mule-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-osgi-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-osgi-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-process-validation-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-process-validation-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-rest-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-rest-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-secure-javascript-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-spring-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-spring-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-spring-boot-starter-actuator-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-spring-boot-starter-basic-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-spring-boot-starter-basic-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-spring-boot-starter-integration-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-spring-boot-starter-jpa-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-spring-boot-starter-rest-api-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/activiti-spring-boot-starter-security-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/content-storage-api-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/content-storage-api-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/content-storage-fs-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/content-storage-fs-6.0.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/editor-image-generator-6.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/matus/Downloads/activiti-6.0.0/libs/editor-image-generator-6.0.0-sources.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

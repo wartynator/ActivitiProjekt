@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="banka" name="Banka" isExecutable="true">
+    <startEvent id="zaciatok" name="Zaciatok"></startEvent>
+    <endEvent id="schvalenie" name="Schvalenie"></endEvent>
+    <scriptTask id="predschvalenieUveru" name="Predschvalenie uveru" scriptFormat="groovy" activiti:autoStoreVariables="false">
+      <script>Banka.checkForPreApproved(execution);</script>
+    </scriptTask>
+    <userTask id="vyplnenieZiadosti" name="Vyplnenie ziadosti" activiti:assignee="ziadatel">
+      <extensionElements>
+        <activiti:formProperty id="0" name="rodneCislo" required="true"></activiti:formProperty>
+        <activiti:formProperty id="1" name="meno"></activiti:formProperty>
+        <activiti:formProperty id="2" name="priezvisko"></activiti:formProperty>
+        <activiti:formProperty id="3" name="pozadovanaVyska"></activiti:formProperty>
+        <activiti:formProperty id="4" name="rocnyPrijem"></activiti:formProperty>
+        <activiti:formProperty id="5" name="posledneMesiace"></activiti:formProperty>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow1" sourceRef="zaciatok" targetRef="vyplnenieZiadosti"></sequenceFlow>
+    <exclusiveGateway id="kontrolaUdajov" name="Kontrola Udajov"></exclusiveGateway>
+    <sequenceFlow id="flow6" sourceRef="kontrolaUdajov" targetRef="predschvalenieUveru">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${kontrolaUdajov == 'TRUE'}]]></conditionExpression>
+    </sequenceFlow>
+    <exclusiveGateway id="kontrolaVyskyUveru" name="Kontrola vysky uveru" default="flow9"></exclusiveGateway>
+    <exclusiveGateway id="vyhodnotenieVeducim" name="Vyhodnotenie veducim"></exclusiveGateway>
+    <sequenceFlow id="flow9" sourceRef="kontrolaVyskyUveru" targetRef="scripttask1"></sequenceFlow>
+    <endEvent id="neschvalenie" name="Neschvalenie"></endEvent>
+    <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
+    <sequenceFlow id="flow17" sourceRef="predschvalenieUveru" targetRef="exclusivegateway1"></sequenceFlow>
+    <scriptTask id="notifikacia" name="Notifikacia" scriptFormat="groovy" activiti:autoStoreVariables="false">
+      <script>println "Notifikacia pre veduceho pracovnika, so ziadostou o schvalenie uveru!"</script>
+    </scriptTask>
+    <exclusiveGateway id="vyhodnotenieZamestnancom" name="Vyhodnotenie zamestnancom"></exclusiveGateway>
+    <sequenceFlow id="flow21" sourceRef="scripttask1" targetRef="vyhodnotenieZamestnancom"></sequenceFlow>
+    <scriptTask id="overenieZiadsti" name="Overenie ziadosti" scriptFormat="groovy" activiti:autoStoreVariables="false">
+      <script>print ""</script>
+    </scriptTask>
+    <sequenceFlow id="flow24" sourceRef="vyplnenieZiadosti" targetRef="overenieZiadsti"></sequenceFlow>
+    <sequenceFlow id="flow25" sourceRef="overenieZiadsti" targetRef="kontrolaUdajov"></sequenceFlow>
+    <sequenceFlow id="flow26" sourceRef="kontrolaUdajov" targetRef="vyplnenieZiadosti">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${kontrolaUdajov == 'FALSE'}]]></conditionExpression>
+    </sequenceFlow>
+    <scriptTask id="priradenieSchvalovania" name="Priradenie schvalovania" scriptFormat="groovy" activiti:autoStoreVariables="false">
+      <script>Banka.addEmployeeRole(execution);</script>
+    </scriptTask>
+    <sequenceFlow id="flow28" sourceRef="priradenieSchvalovania" targetRef="kontrolaVyskyUveru"></sequenceFlow>
+    <sequenceFlow id="flow29" sourceRef="exclusivegateway1" targetRef="priradenieSchvalovania">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${predschvalene == 'TRUE'}]]></conditionExpression>
+    </sequenceFlow>
+    <scriptTask id="scripttask1" name="Schvalenie zamestnancom" scriptFormat="groovy" activiti:autoStoreVariables="false">
+      <script>Banka.decideAboutLoan(execution);
+</script>
+    </scriptTask>
+    <sequenceFlow id="flow30" sourceRef="vyhodnotenieZamestnancom" targetRef="vyhodnotenieVeducim">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${schvaleneZamestnancom == 'FALSE'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flow31" sourceRef="vyhodnotenieVeducim" targetRef="schvalenie">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${schvaleneVeducim == 'TRUE'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flow32" sourceRef="vyhodnotenieVeducim" targetRef="neschvalenie">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${schvaleneVeducim == 'FALSE'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flow33" sourceRef="exclusivegateway1" targetRef="neschvalenie">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${predschvalene == 'FALSE'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flow34" sourceRef="vyhodnotenieZamestnancom" targetRef="schvalenie">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${schvaleneZamestnancom == 'TRUE'}]]></conditionExpression>
+    </sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_banka">
+    <bpmndi:BPMNPlane bpmnElement="banka" id="BPMNPlane_banka">
+      <bpmndi:BPMNShape bpmnElement="zaciatok" id="BPMNShape_zaciatok">
+        <omgdc:Bounds height="35.0" width="35.0" x="3.0" y="235.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="schvalenie" id="BPMNShape_schvalenie">
+        <omgdc:Bounds height="35.0" width="35.0" x="1150.0" y="231.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="predschvalenieUveru" id="BPMNShape_predschvalenieUveru">
+        <omgdc:Bounds height="57.0" width="105.0" x="370.0" y="219.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="vyplnenieZiadosti" id="BPMNShape_vyplnenieZiadosti">
+        <omgdc:Bounds height="55.0" width="105.0" x="60.0" y="220.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="kontrolaUdajov" id="BPMNShape_kontrolaUdajov">
+        <omgdc:Bounds height="40.0" width="40.0" x="318.0" y="231.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="kontrolaVyskyUveru" id="BPMNShape_kontrolaVyskyUveru">
+        <omgdc:Bounds height="40.0" width="40.0" x="710.0" y="229.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="vyhodnotenieVeducim" id="BPMNShape_vyhodnotenieVeducim">
+        <omgdc:Bounds height="40.0" width="40.0" x="947.0" y="227.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="neschvalenie" id="BPMNShape_neschvalenie">
+        <omgdc:Bounds height="35.0" width="35.0" x="1160.0" y="52.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exclusivegateway1" id="BPMNShape_exclusivegateway1">
+        <omgdc:Bounds height="40.0" width="40.0" x="513.0" y="227.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="notifikacia" id="BPMNShape_notifikacia">
+        <omgdc:Bounds height="55.0" width="105.0" x="780.0" y="120.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="vyhodnotenieZamestnancom" id="BPMNShape_vyhodnotenieZamestnancom">
+        <omgdc:Bounds height="40.0" width="40.0" x="926.0" y="357.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="overenieZiadsti" id="BPMNShape_overenieZiadsti">
+        <omgdc:Bounds height="57.0" width="105.0" x="194.0" y="223.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="priradenieSchvalovania" id="BPMNShape_priradenieSchvalovania">
+        <omgdc:Bounds height="56.0" width="105.0" x="581.0" y="220.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="scripttask1" id="BPMNShape_scripttask1">
+        <omgdc:Bounds height="61.0" width="105.0" x="780.0" y="337.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="38.0" y="252.0"></omgdi:waypoint>
+        <omgdi:waypoint x="60.0" y="247.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
+        <omgdi:waypoint x="358.0" y="251.0"></omgdi:waypoint>
+        <omgdi:waypoint x="370.0" y="247.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow9" id="BPMNEdge_flow9">
+        <omgdi:waypoint x="730.0" y="269.0"></omgdi:waypoint>
+        <omgdi:waypoint x="730.0" y="366.0"></omgdi:waypoint>
+        <omgdi:waypoint x="780.0" y="367.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow17" id="BPMNEdge_flow17">
+        <omgdi:waypoint x="475.0" y="247.0"></omgdi:waypoint>
+        <omgdi:waypoint x="513.0" y="247.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow21" id="BPMNEdge_flow21">
+        <omgdi:waypoint x="885.0" y="367.0"></omgdi:waypoint>
+        <omgdi:waypoint x="926.0" y="377.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow24" id="BPMNEdge_flow24">
+        <omgdi:waypoint x="165.0" y="247.0"></omgdi:waypoint>
+        <omgdi:waypoint x="194.0" y="251.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow25" id="BPMNEdge_flow25">
+        <omgdi:waypoint x="299.0" y="251.0"></omgdi:waypoint>
+        <omgdi:waypoint x="318.0" y="251.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow26" id="BPMNEdge_flow26">
+        <omgdi:waypoint x="338.0" y="271.0"></omgdi:waypoint>
+        <omgdi:waypoint x="338.0" y="329.0"></omgdi:waypoint>
+        <omgdi:waypoint x="113.0" y="329.0"></omgdi:waypoint>
+        <omgdi:waypoint x="112.0" y="275.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow28" id="BPMNEdge_flow28">
+        <omgdi:waypoint x="686.0" y="248.0"></omgdi:waypoint>
+        <omgdi:waypoint x="710.0" y="249.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow29" id="BPMNEdge_flow29">
+        <omgdi:waypoint x="553.0" y="247.0"></omgdi:waypoint>
+        <omgdi:waypoint x="581.0" y="248.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow30" id="BPMNEdge_flow30">
+        <omgdi:waypoint x="946.0" y="357.0"></omgdi:waypoint>
+        <omgdi:waypoint x="967.0" y="267.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow31" id="BPMNEdge_flow31">
+        <omgdi:waypoint x="987.0" y="247.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1150.0" y="248.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow32" id="BPMNEdge_flow32">
+        <omgdi:waypoint x="967.0" y="227.0"></omgdi:waypoint>
+        <omgdi:waypoint x="967.0" y="69.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1160.0" y="69.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow33" id="BPMNEdge_flow33">
+        <omgdi:waypoint x="533.0" y="227.0"></omgdi:waypoint>
+        <omgdi:waypoint x="533.0" y="69.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1160.0" y="69.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow34" id="BPMNEdge_flow34">
+        <omgdi:waypoint x="966.0" y="377.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1140.0" y="395.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1167.0" y="266.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
